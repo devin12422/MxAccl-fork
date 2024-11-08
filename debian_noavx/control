@@ -1,0 +1,9 @@
+Source: memx-accl-noavx
+Maintainer: MemryX <no-reply@memryx.com>
+Build-Depends: debhelper (>= 10), memx-drivers (>= 1.0.0), memx-drivers (<< 1.1.0)
+
+Package: memx-accl-noavx
+Architecture: amd64
+Depends: memx-drivers (>= 1.0.0), memx-drivers (<< 1.1.0), ${shlibs:Depends}, ${misc:Depends}
+Conflicts: memx-accl
+Description: MemryX Runtime API library for C++ (for x86_64 systems without AVX2)

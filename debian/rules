@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+DH_VERBOSE = 1
+
+include /usr/share/dpkg/pkg-info.mk
+include /usr/share/dpkg/architecture.mk
+
+%:
+	dh $@
+
+override_dh_install:
+	dh_install build/mx_accl/libmx_accl.so.$(DEB_VERSION_UPSTREAM) usr/lib/$(DEB_HOST_GNU_CPU)-linux-gnu/
+	dh_link usr/lib/$(DEB_HOST_GNU_CPU)-linux-gnu/libmx_accl.so.$(DEB_VERSION_UPSTREAM) usr/lib/$(DEB_HOST_GNU_CPU)-linux-gnu/libmx_accl.so
+	dh_install build/mx_accl/libmx_accl.a usr/lib/$(DEB_HOST_GNU_CPU)-linux-gnu/
+	dh_install mx_accl/include/memx/* usr/include/memx/
+	dh_install build/samples/acclBench/acclBench usr/bin/
+	
+#dh_install plugins/*.so usr/lib/$(DEB_HOST_GNU_CPU)-linux-gnu/
+
+override_dh_shlibdeps:
+	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
+
+override_dh_auto_configure:
+override_dh_auto_build:
+override_dh_auto_test:
+
+override_dh_auto_install:
+	rm -rf build ; mkdir build ; cd build ; cmake -DCMAKE_BUILD_TYPE=Packaging .. && make -j && mv -v mx_accl/libmx_accl.so mx_accl/libmx_accl.so.$(DEB_VERSION_UPSTREAM) && mv -v mx_accl/libmx_accl_static.a mx_accl/libmx_accl.a
+
+override_dh_auto_clean:

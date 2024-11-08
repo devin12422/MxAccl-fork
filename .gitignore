@@ -1,0 +1,49 @@
+.vscode/
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+build/
+Testing/
+mx_accl/memx-accl/
+mx_accl/x64/
+mx_accl/.vs/
+mx_accl/memx-accl.vcxproj.user
+samples/windows/depthEstimation/depthEstimation/
+samples/windows/depthEstimation/x64/
+samples/windows/depthEstimation/.vs/
+samples/windows/depthEstimation/depthEstimation.vcxproj.user
+samples/windows/CenterNet_Onnx/CenterNet_Onnx/
+samples/windows/CenterNet_Onnx/x64/
+samples/windows/CenterNet_Onnx/.vs/
+samples/windows/CenterNet_Onnx/CenterNet_Onnx.vcxproj.user
+samples/MultiModel/libtorch*
